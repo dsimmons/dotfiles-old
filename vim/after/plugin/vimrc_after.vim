@@ -11,3 +11,7 @@ endif
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
 endif
+
+" NOTE: Hack. Necessary for Lightline to appear correctly when
+"       the theme is changed (eg. on BufEnter).
+autocmd BufEnter,BufNewFile * call lightline#highlight()
