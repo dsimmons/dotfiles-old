@@ -11,23 +11,16 @@
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-set rtp+=~/.vim/vundles/ "Submodules
+set rtp+=~/.vim/plugins/ "Submodules
 call vundle#rc()
 
 " let Vundle manage Vundle (required)
 Bundle "gmarik/vundle"
 
-" YADR's vundles are split up by category into smaller files
-" This reduces churn and makes it easier to fork. See
-" ~/.vim/vundles/ to edit them:
-runtime ruby.vundle
-runtime languages.vundle
-runtime git.vundle
-runtime appearance.vundle
-runtime textobjects.vundle
-runtime search.vundle
-runtime project.vundle
-runtime vim-improvements.vundle
+let g:spf13_bundle_groups=['general', 'writing', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
+for f in split(glob('~/.vim/plugins/*.vim'), '\n')
+  exe 'source' f
+endfor
 
 " The plugins listed in ~/.vim/.vundles.local will be added here to
 " allow the user to add vim plugins to yadr without the need for a fork.
