@@ -1,5 +1,5 @@
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -32,8 +32,13 @@ function! MyFugitive()
 endfunction
 
 function! MyFilename()
+  " Get file name (eg. expand('%:t') => lightline.vim), along with
+  " its containing/parent directory.
+  " Example: /some/path/to/a/file.type
+  " Produces: a/file.type
+  let filename = substitute(expand('%'), '.*/\([^/]\+/\)', '\1', '')
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%') ? expand('%') : '[NoName]')
+       \ ('' != filename ? filename : '[NoName]')
 endfunction
 
 " Use status bar even with single buffer

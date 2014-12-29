@@ -27,5 +27,6 @@ else
   end
 endif
 
-colorscheme solarized
 set background=dark
+let g:rehash256=1     " Specific to molokai to enable more subtle color.
+colorscheme molokai
