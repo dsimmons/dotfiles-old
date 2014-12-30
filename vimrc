@@ -24,9 +24,6 @@ set autoread                    "Reload files changed outside vim
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-"turn on syntax highlighting
-syntax on
-
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all 
@@ -39,6 +36,17 @@ let mapleader=","
 if filereadable(expand("~/.vim/plugins.vim"))
   source ~/.vim/plugins.vim
 endif
+
+if filereadable(expand("~/.vim/mappings.vim"))
+  source ~/.vim/mappings.vim
+endif
+
+syntax on                       " Turn on syntax highlighting
+set background=dark
+let g:rehash256=1               " Specific to molokai to enable more subtle color.
+colorscheme molokai
+highlight clear SignColumn      " SignColumn should match background
+" highlight clear LineNr          " Current line number row will have same background color in relative mode
 
 " ================ Turn Off Swap Files ==============
 
@@ -104,6 +112,10 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" ================ Search Settings  =================
 
-" ================ Custom Settings ========================
-so ~/.yadr/vim/settings.vim
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Hilight searches by default
+set viminfo='100,f1 " Save up to 100 marks, enable capital marks
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital

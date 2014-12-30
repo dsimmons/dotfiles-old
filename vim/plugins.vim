@@ -30,7 +30,7 @@ if !exists('g:plugin_groups')
         \ 'improvements',
         \ 'javascript',
         \ 'misc',
-        \ 'neocomplcache',
+        \ 'youcompleteme',
         \ 'programming',
         \ 'python',
         \ 'ruby',
