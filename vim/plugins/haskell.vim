@@ -1,4 +1,4 @@
-if count(g:spf13_bundle_groups, 'haskell')
+if count(g:plugin_groups, 'haskell')
   Bundle 'travitch/hasksyn'
   Bundle 'dag/vim2hs'
   Bundle 'Twinside/vim-haskellConceal'

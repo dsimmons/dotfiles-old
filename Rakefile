@@ -79,7 +79,7 @@ task :vundle_migration do
   puts ".vim/bundle.old and replacing all your vim plugins with"
   puts "the standard set of plugins. You will then be able to "
   puts "manage your vim's plugin configuration by editing the "
-  puts "file .vim/vundles.vim"
+  puts "file .vim/plugins.vim"
   puts "======================================================"
 
   Dir.glob(File.join('vim', 'bundle','**')) do |sub_path|

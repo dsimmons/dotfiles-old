@@ -1,3 +1,3 @@
-if count(g:spf13_bundle_groups, 'go')
+if count(g:plugin_groups, 'go')
   Bundle 'fatih/vim-go'
 endif

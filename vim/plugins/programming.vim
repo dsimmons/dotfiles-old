@@ -1,9 +1,6 @@
-if count(g:spf13_bundle_groups, 'programming')
-  " Pick one of the checksyntax, jslint, or syntastic
+if count(g:plugin_groups, 'programming')
   Bundle 'scrooloose/syntastic'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'mattn/webapi-vim'
-  Bundle 'mattn/gist-vim'
+  " Bundle 'mattn/webapi-vim'
   Bundle 'scrooloose/nerdcommenter'
   Bundle 'tpope/vim-commentary'
   Bundle 'godlygeek/tabular'

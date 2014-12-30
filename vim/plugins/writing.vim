@@ -1,4 +1,4 @@
-if count(g:spf13_bundle_groups, 'writing')
+if count(g:plugin_groups, 'writing')
   Bundle 'reedes/vim-litecorrect'
   Bundle 'reedes/vim-textobj-sentence'
   Bundle 'reedes/vim-textobj-quote'
