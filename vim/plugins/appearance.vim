@@ -7,6 +7,9 @@ function! s:vim_colors_solarized()
 endfunction
 
 function! s:lightline()
+  " Use status bar even with single buffer
+  set laststatus=2
+
   let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'active': {
@@ -14,13 +17,26 @@ function! s:lightline()
         \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
         \ },
         \ 'component_function': {
-        \   'fugitive': 'MyFugitive',
-        \   'readonly': 'MyReadonly',
         \   'filename': 'MyFilename',
+        \   'fugitive': 'MyFugitive',
+        \   'mode':     'MyMode',
+        \   'paste':    'MyPaste',
+        \   'readonly': 'MyReadonly',
         \ },
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
         \ }
+
+  let s:threshold = 70
+
+  function! MyMode()
+    return winwidth(0) > s:threshold ? lightline#mode() : lightline#mode()[0]
+  endfunction
+
+  function! MyPaste()
+    if !&paste | return '' | endif
+    return winwidth(0) > s:threshold ? 'PASTE' : 'P'
+  endfunction
 
   function! MyReadonly()
     if &filetype == "help"
@@ -35,7 +51,8 @@ function! s:lightline()
   function! MyFugitive()
     if exists("*fugitive#head")
       let _ = fugitive#head()
-      return strlen(_) ? '⭠ '._ : ''
+      let display_str = strlen(_) ? '⭠ '._ : ''
+      return winwidth(0) > s:threshold ? display_str : ''
     endif
     return ''
   endfunction
@@ -45,13 +62,11 @@ function! s:lightline()
     " its containing/parent directory.
     " Example: /some/path/to/a/file.type
     " Produces: a/file.type
-    let filename = substitute(expand('%'), '.*/\([^/]\+/\)', '\1', '')
+    let filename = substitute(expand('%:p'), '.*/\([^/]\+/\)', '\1', '')
+    let filename = winwidth(0) > s:threshold ? filename : expand('%:t')
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
           \ ('' != filename ? filename : '[NoName]')
   endfunction
-
-  " Use status bar even with single buffer
-  set laststatus=2
 endfunction
 
 if count(g:plugin_groups, 'appearance')
