@@ -10,7 +10,6 @@ endif
 
 " ================ General Config ====================
 
-set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -41,12 +40,24 @@ if filereadable(expand("~/.vim/mappings.vim"))
   source ~/.vim/mappings.vim
 endif
 
-syntax on                       " Turn on syntax highlighting
-set background=dark
+" ===================== Appearance =====================
+syntax on                       " syntax highlighting
+set background=dark             " assume dark background
 let g:rehash256=1               " Specific to molokai to enable more subtle color.
 colorscheme molokai
-highlight clear SignColumn      " SignColumn should match background
-" highlight clear LineNr          " Current line number row will have same background color in relative mode
+highlight clear SignColumn      " Sign column, clear styling and match background
+highlight clear LineNr          " Line number, clear styling and match background.
+
+" On window focus, turn on relative line numbering and a visual \"crosshair\".
+" Although more convenient, FocusGained/FocusLost doesn't seem to work
+" reliably on terminal versions of Vim.
+augroup focusme
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal
+        \ relativenumber cursorline cursorcolumn
+  autocmd WinLeave * setlocal
+        \ norelativenumber nocursorline nocursorcolumn
+augroup end
 
 " ================ Turn Off Swap Files ==============
 
