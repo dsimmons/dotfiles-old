@@ -11,6 +11,11 @@ if count(g:plugin_groups, 'javascript')
   Bundle 'elzr/vim-json'
   Bundle 'groenewege/vim-less'
   Bundle 'kchmck/vim-coffee-script'
+
+  " JSX highlighting, indenting, and parsing (for React.js).
+  " Depends on: pangloss/vim-javascript
+  Bundle 'mxw/vim-jsx'
+
   Bundle "othree/javascript-libraries-syntax.vim"
   Bundle 'pangloss/vim-javascript'
 endif
