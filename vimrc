@@ -59,20 +59,22 @@ augroup focusme
         \ norelativenumber nocursorline nocursorcolumn
 augroup end
 
-" ================ Turn Off Swap Files ==============
+" ================ Persistence ======================
 
 set noswapfile
 set nobackup
 set nowb
 
-" ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
-" Only works all the time.
 if has('persistent_undo')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
+
+" Defaults for Vim 7.4 1-488 installed using Homebrew on OSX 10.10.1.
+" If ever on a system where these are different, compare to and/or use.
+" set viminfo='100,<50,s10,h
 
 " ================ Indentation ======================
 
@@ -123,10 +125,9 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-" ================ Search Settings  =================
+" ================ Search ===========================
 
 set incsearch       " Find the next match as we type the search
-set hlsearch        " Hilight searches by default
-set viminfo='100,f1 " Save up to 100 marks, enable capital marks
+set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
