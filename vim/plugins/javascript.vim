@@ -1,7 +1,9 @@
 if count(g:plugin_groups, 'javascript')
 
   " Default to JSHint for now if both exist because ESLint's ES6 support is spotty.
-  if executable('jshint')
+  if executable('jsxhint')
+    let g:syntastic_javascript_checkers = ['jsxhint']
+  elseif executable('jshint')
     let g:syntastic_javascript_checkers = ['jshint']
   elseif executable('eslint')
     let g:syntastic_javascript_checkers = ['eslint']
@@ -14,6 +16,7 @@ if count(g:plugin_groups, 'javascript')
 
   " JSX highlighting, indenting, and parsing (for React.js).
   " Depends on: pangloss/vim-javascript
+  let g:jsx_ext_required = 0  " Enable JSX support in vanilla JS files.
   Bundle 'mxw/vim-jsx'
 
   Bundle "othree/javascript-libraries-syntax.vim"
