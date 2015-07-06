@@ -8,6 +8,7 @@ let g:syntastic_auto_loc_list=1
 if count(g:plugin_groups, 'programming')
   Bundle 'scrooloose/syntastic'
   " Bundle 'mattn/webapi-vim'
+  Plugin 'kylef/apiblueprint.vim'
   Bundle 'scrooloose/nerdcommenter'
   Bundle 'tpope/vim-commentary'
   Bundle 'godlygeek/tabular'
