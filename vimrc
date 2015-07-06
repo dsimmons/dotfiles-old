@@ -92,7 +92,7 @@ filetype indent on
 " Display tabs and trailing spaces visually
 " set list listchars=tab:\ \ ,trail:·
 set list listchars=tab:»\ ,trail:·
-map <silent> <Leader>lc :set list!<CR>
+map <silent> <Leader>lch :set list!<CR>
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points

@@ -65,3 +65,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+" Shortcut for closing quickfix window (mainly for hiding Syntastic).
+" Some languages are noisy with warnings and make it hard to see.
+nnoremap <Leader>lcl :lclose<CR>
